@@ -5,6 +5,7 @@ import edu.isu.cs.cs3308.structures.Tree;
 import edu.isu.cs.cs3308.structures.impl.AbstractBinaryTree;
 import java.io.PrintWriter;
 import edu.isu.cs.cs3308.Datum;
+import edu.isu.cs.cs3308.structures.impl.LinkedBinaryTree;
 
 /**
  * A simple Traversal Command for Datum Objects which writes to a PrintWriter
@@ -42,7 +43,7 @@ public class EnumeratedSaveCommand extends TraversalCommand<Datum> {
         int parentNum = node.getParent() == null ? -1 : node.getParent().getElement().getNumber();
         String side = "r";
         if (node.getParent() != null)
-            side = node.equals(((AbstractBinaryTree) tree).left(node.getParent())) ? "l" : "r";
+            side = node.equals(((LinkedBinaryTree<Datum>) tree).left(node.getParent())) ? "l" : "r";
         writer.printf("%d:%d:%s:%s%n", parentNum, data.getNumber(), side, data.getPrompt());
     }
 
